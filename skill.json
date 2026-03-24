@@ -1,0 +1,94 @@
+{
+  "name": "style-prompt-studio",
+  "version": "1.0.0",
+  "description": "Generate multi-style PPT slides with AI using nanobanana2",
+  "author": "AAAAAAAJ",
+  "license": "MIT",
+  "homepage": "https://github.com/AAAAAAAJ/slides#readme",
+  "repository": "https://github.com/AAAAAAAJ/slides",
+  "skills": [
+    {
+      "name": "ppt-slide-generator",
+      "description": "Generate PPT slides in 11 different visual styles using nanobanana2",
+      "input": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Slide title (max 8 words)"
+          },
+          "subtitle": {
+            "type": "string",
+            "description": "Slide subtitle (max 12 words)"
+          },
+          "stats": {
+            "type": "string",
+            "description": "Key statistics (comma-separated, 3-5 data points)"
+          },
+          "style": {
+            "type": "string",
+            "enum": [
+              "retro-pop",
+              "minimal",
+              "cyberpunk",
+              "neo-brutalism",
+              "acid-graphics",
+              "modern-minimal-pop",
+              "swiss-international",
+              "dark-editorial",
+              "design-blueprint",
+              "neo-brutalist-ui",
+              "y2k-pixel-retro"
+            ],
+            "description": "Visual style for the slide"
+          },
+          "language": {
+            "type": "string",
+            "enum": ["en", "cn"],
+            "default": "en",
+            "description": "Content language"
+          }
+        },
+        "required": ["title", "style"]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "Generated prompt for nanobanana2"
+          },
+          "style_name": {
+            "type": "string",
+            "description": "Display name of the selected style"
+          },
+          "recommended_settings": {
+            "type": "object",
+            "properties": {
+              "model": {"type": "string"},
+              "resolution": {"type": "string"},
+              "aspect_ratio": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "content_transformation": "Expert at transforming complex professional knowledge into digestible content",
+    "viral_content_logic": "Deep search platform upvoted notes - Quickly extract viral content logic",
+    "summarization": "Skilled in summarization and analogies - Make complex topics accessible",
+    "visual_first": "Visual-first approach - Leverage graphics for better comprehension",
+    "data_driven": "Data-driven strategy - Include specific numbers in each module when needed",
+    "golden_quotes": "Golden quotes summary - Highlight key takeaways when necessary"
+  },
+  "tags": [
+    "ppt",
+    "slides",
+    "nanobanana2",
+    "image-generation",
+    "design",
+    "302.ai",
+    "prompts"
+  ]
+}
