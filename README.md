@@ -41,21 +41,137 @@
 
 ---
 
-## 11 Available Styles
+## 11 Available Styles with Examples
 
-| # | Style | Best For |
-|---|-------|----------|
-| 1 | 🎨 Retro Pop Art | 创意展示、品牌宣传 |
-| 2 | ⚪ Minimalist Clean | 企业汇报、产品介绍 |
-| 3 | 🌃 Cyberpunk Neon | 科技主题、未来感 |
-| 4 | 🔲 Neo-Brutalism | 个性表达、艺术展示 |
-| 5 | 🌈 Acid Graphics Y2K | 潮流内容、年轻受众 |
-| 6 | 📱 Modern Minimal Pop | 社交媒体、轻量内容 |
-| 7 | 🇨🇭 Swiss International | 专业设计、高端展示 |
-| 8 | 🌑 Dark Editorial | 深度内容、评论分析 |
-| 9 | 📐 Design Blueprint | 产品文档、技术说明 |
-| 10 | 🖥️ Neo-Brutalist UI | 界面展示、SaaS 产品 |
-| 11 | 👾 Y2K Pixel Retro | 怀旧主题、创意内容 |
+### 1. 🎨 Retro Pop Art (复古波普)
+
+**Best for:** 创意展示、品牌宣传
+
+```
+Retro pop art style PPT slide, 1970s magazine aesthetic, flat design with thick black outlines, cream beige background, bold title text, subtitle below, key statistics displayed as cards, Salmon pink #FF6B6B, sky blue #4ECDC4, mustard yellow #FFD93D, mint green #6BCB77 accents, Geometric decorations: quarter circles, concentric rings, star bursts, Bold sans-serif typography, Professional presentation design, 16:9
+```
+
+![Retro Pop Art Example](demos/yc-intro/images/01-retro-pop-en.png)
+
+---
+
+### 2. ⚪ Minimalist Clean (极简主义)
+
+**Best for:** 企业汇报、产品介绍
+
+```
+Minimalist clean design PPT slide, White background, generous whitespace, centered title text, subtitle below, key stats in simple cards, Subtle gray and blue accents, Thin elegant lines, Inter Helvetica font, Professional corporate presentation, Simple elegant layout, 16:9
+```
+
+![Minimalist Clean Example](demos/yc-intro/images/02-minimal-en.png)
+
+---
+
+### 3. 🌃 Cyberpunk Neon (赛博朋克)
+
+**Best for:** 科技主题、未来感
+
+```
+Cyberpunk neon style PPT slide, Dark charcoal background, title text with neon glow effect, subtitle below, Neon colors: magenta #FF00FF, cyan #00FFFF, yellow #FFFF00, Tech grid patterns, circuit decorations, Holographic data panels, glow effects, Futuristic UI elements, Digital presentation, 16:9
+```
+
+![Cyberpunk Neon Example](demos/yc-intro/images/03-cyberpunk-en.png)
+
+---
+
+### 4. 🔲 Neo-Brutalism (新粗野主义)
+
+**Best for:** 个性表达、艺术展示
+
+```
+Neo-brutalism style PPT slide, raw design, Cream background, bold title text, subtitle below, key stats displayed, Bold primary colors: red #FF4D4D, blue #4D94FF, yellow #FFD93D, Thick 4px black outlines, hard shadows, Brutalist frames, bold typography, Stark contrast, 16:9
+```
+
+![Neo-Brutalism Example](demos/yc-intro/images/04-neo-brutalism-en.png)
+
+---
+
+### 5. 🌈 Acid Graphics Y2K (酸性设计)
+
+**Best for:** 潮流内容、年轻受众
+
+```
+Acid graphics Y2K style PPT slide, Light gray background, title text, subtitle below, key stats in stylized cards, Metallic chrome elements, holographic accents, Colors: purple #B185FF, pink #FF6EC7, mint #7BFFCB, gold #FFD700, Liquid shapes, star sparkles, mesh gradients, Y2K aesthetic, futuristic design, 16:9
+```
+
+![Acid Graphics Y2K Example](demos/yc-intro/images/05-acid-graphics-en.png)
+
+---
+
+### 6. 📱 Modern Minimal Pop (现代极简波普)
+
+**Best for:** 社交媒体、轻量内容
+
+```
+Modern minimal pop art PPT slide, Instagram aesthetic, Pastel background, title text, subtitle below, key stats displayed, Pastel colors: mint #A8E6C8, cream #FFF4BD, coral #FF8B7A, purple #8B7AFF, Star burst graphics, thin line circles, Tilted color blocks, small arrows, Clean sans-serif typography, Swiss design influence, 16:9
+```
+
+![Modern Minimal Pop Example](demos/yc-intro/images/06-modern-minimal-pop-en.png)
+
+---
+
+### 7. 🇨🇭 Swiss International (瑞士国际主义)
+
+**Best for:** 专业设计、高端展示
+
+```
+Swiss international style PPT slide, brutalist graphic design, Light gray background, bold title text, subtitle with diagonal layout, key stats in geometric blocks, High saturation colors: blue #007AFF, green #00994D, yellow #FFF066, purple #9966FF, pink #FF3399, orange #FF8800, Helvetica font, Asymmetric composition, 16:9
+```
+
+![Swiss International Example](demos/yc-intro/images/07-swiss-international-en.png)
+
+---
+
+### 8. 🌑 Dark Editorial (暗黑编辑出版)
+
+**Best for:** 深度内容、评论分析
+
+```
+Dark editorial PPT slide, New York Times Sunday Review style, Black background with white dot grid pattern, title text in white, subtitle below, white text, orange accent #E85D2A, Minimalist wireframe illustrations, Serif typography, Dramatic negative space, Newspaper aesthetic, 16:9
+```
+
+![Dark Editorial Example](demos/yc-intro/images/08-dark-editorial-en.png)
+
+---
+
+### 9. 📐 Design Blueprint (设计蓝图)
+
+**Best for:** 产品文档、技术说明
+
+```
+Design blueprint PPT slide, Figma documentation style, White background with cyan grid lines #66B8CC, title text, subtitle below, Figma selection boxes with control points, Annotation lines, numbered labels, Technical UI mockup aesthetic, Clean sans-serif Inter font, 16:9
+```
+
+![Design Blueprint Example](demos/yc-intro/images/09-design-blueprint-en.png)
+
+---
+
+### 10. 🖥️ Neo-Brutalist UI (粗野主义 UI)
+
+**Best for:** 界面展示、SaaS 产品
+
+```
+Neo-brutalist UI PPT slide, dashboard interface design, Cream background, title text, subtitle below, stats in cards, Pastel panels: mint #A8E4CF, yellow #FFD93D, lavender #E5B3FF, Thick 3px black outlines, Card-based layout, flat colors, Bold typography, Contemporary SaaS dashboard aesthetic, 16:9
+```
+
+![Neo-Brutalist UI Example](demos/yc-intro/images/10-neo-brutalist-ui-en.png)
+
+---
+
+### 11. 👾 Y2K Pixel Retro (Y2K 像素复古)
+
+**Best for:** 怀旧主题、创意内容
+
+```
+Y2K pixel retro PPT slide, 1990s aesthetic, Dark background with noise texture, title text in pixel font, subtitle below, Bright colors: yellow #FFD700, orange #FF8C00, green #4A7C4E, Pixel art computer icons, CRT monitor graphics, Isometric tech illustrations, VT323 pixel font style, Vintage 1990s design, 16:9
+```
+
+![Y2K Pixel Retro Example](demos/yc-intro/images/11-y2k-pixel-retro-en.png)
 
 ---
 
@@ -81,62 +197,13 @@
 
 ---
 
-## Example Gallery
+## Tips for Best Results
 
-### YC Introduction Demo (11 Styles × 2 Languages = 22 Images)
-
-<details>
-<summary><b>🎨 Click to view all 11 style examples</b></summary>
-
-#### 1. Retro Pop Art
-![Retro Pop](demos/yc-intro/images/01-retro-pop-en.png)
-
-#### 2. Minimalist Clean
-![Minimal](demos/yc-intro/images/02-minimal-en.png)
-
-#### 3. Cyberpunk Neon
-![Cyberpunk](demos/yc-intro/images/03-cyberpunk-en.png)
-
-#### 4. Neo-Brutalism
-![Neo-Brutalism](demos/yc-intro/images/04-neo-brutalism-en.png)
-
-#### 5. Acid Graphics Y2K
-![Acid Graphics](demos/yc-intro/images/05-acid-graphics-en.png)
-
-#### 6. Modern Minimal Pop
-![Modern Minimal Pop](demos/yc-intro/images/06-modern-minimal-pop-en.png)
-
-#### 7. Swiss International
-![Swiss International](demos/yc-intro/images/07-swiss-international-en.png)
-
-#### 8. Dark Editorial
-![Dark Editorial](demos/yc-intro/images/08-dark-editorial-en.png)
-
-#### 9. Design Blueprint
-![Design Blueprint](demos/yc-intro/images/09-design-blueprint-en.png)
-
-#### 10. Neo-Brutalist UI
-![Neo-Brutalist UI](demos/yc-intro/images/10-neo-brutalist-ui-en.png)
-
-#### 11. Y2K Pixel Retro
-![Y2K Pixel Retro](demos/yc-intro/images/11-y2k-pixel-retro-en.png)
-
-</details>
-
----
-
-## Example Usage
-
-### Input Prompt (Retro Pop Style)
-```
-Retro pop art style PPT slide, 1970s magazine aesthetic, flat design with thick black outlines,
-cream beige background,
-bold title text, subtitle below, key statistics displayed as cards,
-Salmon pink, sky blue, mustard yellow, mint green accents,
-Geometric decorations, Bold typography, Professional presentation, 16:9
-```
-
-### 复制后根据需要修改文字，粘贴到 nanobanana2 生成!
+1. **Be specific** - "thick black outlines" works better than "bold lines"
+2. **Always specify 16:9** - For PPT format
+3. **Limit text** - AI handles short text better
+4. **Use color names + hex** - "salmon pink #FF6B6B"
+5. **Iterate** - Small prompt tweaks = different results
 
 ---
 
@@ -146,26 +213,10 @@ Geometric decorations, Bold typography, Professional presentation, 16:9
 slides/
 ├── README.md           # This file
 ├── PROMPTS.md          # All 11 style prompts (copy from here)
-├── styles/             # Style configurations (JSON)
-└── demos/yc-intro/     # Example outputs
-    └── images/         # 22 generated samples
+├── skill.json          # OpenClaw skill config
+├── CLAUDE.md           # Skill context
+└── demos/yc-intro/images/  # 22 generated samples
 ```
-
----
-
-## Full Prompts Reference
-
-See **[PROMPTS.md](PROMPTS.md)** for all 11 style prompts ready to copy-paste.
-
----
-
-## Tips for Best Results
-
-1. **Be specific** - "thick black outlines" works better than "bold lines"
-2. **Always specify 16:9** - For PPT format
-3. **Limit text** - AI handles short text better
-4. **Use color names + hex** - "salmon pink #FF6B6B"
-5. **Iterate** - Small prompt tweaks = different results
 
 ---
 
