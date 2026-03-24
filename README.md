@@ -1,138 +1,135 @@
 # Style Prompt Studio
 
-> 为 PPT/幻灯片生成多风格视觉内容
+> Generate multi-style PPT slides with AI
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 简介
+---
 
-这是一个**PPT 幻灯片风格生成系统**，支持 11 种视觉风格，可批量生成中英文版本的设计稿。
+## Core Capabilities
+
+* **Expert at transforming complex professional knowledge into digestible content**
+
+* **Deep search platform upvoted notes** - Quickly extract viral content logic
+
+* **Skilled in summarization and analogies** - Make complex topics accessible
+
+* **Visual-first approach** - Leverage graphics for better comprehension
+
+* **Data-driven strategy** - Include specific numbers in each module when needed
+
+* **Golden quotes summary** - Highlight key takeaways when necessary
 
 ---
 
-## 快速开始
+## Quick Start
 
-### 1. 准备环境
+### 1. Setup Environment
 
 ```bash
-# 创建虚拟环境
+# Create virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
 
-# 安装依赖
+# Install dependencies
 pip install requests
 ```
 
-### 2. 设置 API Key
+### 2. Set API Key
 
-获取 302.ai API Key：https://app.inference.sh/settings/keys
+Get your 302.ai API Key: https://app.inference.sh/settings/keys
 
 ```bash
 export API_KEY="sk-your-api-key-here"
 ```
 
-### 3. 运行生成脚本
+### 3. Generate Slides
 
 ```bash
-cd demos/yc-intro
-python generate.py
+# Generate YC intro demo (11 styles, 22 images)
+python demos/yc-intro/generate.py
+
+# Generate custom slides
+python scripts/generate.py -t "Your Title" -s "Subtitle" --style all
 ```
 
 ---
 
-## 支持的 11 种风格
+## Supported Styles (11 Total)
 
-| 风格 | 描述 | 适用场景 |
-|------|------|----------|
-| Retro Pop Art | 70 年代复古波普 | 创意展示、品牌宣传 |
-| Minimalist Clean | 极简主义 | 企业汇报、产品介绍 |
-| Cyberpunk Neon | 赛博朋克霓虹 | 科技主题、未来感展示 |
-| Neo-Brutalism | 新粗野主义 | 个性化表达、艺术展示 |
-| Acid Graphics Y2K | 酸性设计/Y2K | 潮流内容、年轻受众 |
-| Modern Minimal Pop | 现代极简波普 | 社交媒体、轻量内容 |
-| Swiss International | 瑞士国际主义 | 专业设计、高端展示 |
-| Dark Editorial | 暗黑编辑出版 | 深度内容、评论分析 |
-| Design Blueprint | 设计蓝图 | 产品文档、技术说明 |
-| Neo-Brutalist UI | 粗野主义 UI | 界面展示、SaaS 产品 |
-| Y2K Pixel Retro | Y2K 像素复古 | 怀旧主题、创意内容 |
+| Style | Description | Best For |
+|-------|-------------|----------|
+| Retro Pop Art | 70s magazine aesthetic | Creative showcases |
+| Minimalist Clean | Clean corporate look | Business presentations |
+| Cyberpunk Neon | Dark futuristic theme | Tech topics |
+| Neo-Brutalism | Bold raw design | Artistic expression |
+| Acid Graphics Y2K | Metallic chrome Y2K | Trendy content |
+| Modern Minimal Pop | Instagram pastel | Social media |
+| Swiss International | Swiss design | Professional decks |
+| Dark Editorial | NYT review style | Deep analysis |
+| Design Blueprint | Figma doc style | Technical docs |
+| Neo-Brutalist UI | Dashboard UI | SaaS products |
+| Y2K Pixel Retro | 90s pixel art | Nostalgic themes |
 
 ---
 
-## 项目结构
+## PPT Generation Best Practices
+
+### Content Guidelines
+
+1. **Title**: Keep it under 8 words, bold and clear
+2. **Subtitle**: One line explanation, max 12 words
+3. **Key Stats**: 3-5 data points maximum
+4. **Visual Balance**: Leave 30% whitespace
+5. **Font Hierarchy**: Title > Subtitle > Stats > Decorations
+
+### Recommended API Settings
+
+```bash
+# Use nanobanana2 2K for best quality
+Model: gemini-3.1-flash-image-preview
+Resolution: 2048*1152 (2K 16:9) or higher
+Format: PNG for transparency support
+```
+
+### Prompt Structure
+
+```
+[Style] PPT slide, [aesthetic description],
+Title: [your title],
+Subtitle: [your subtitle],
+Key data: [stat1, stat2, stat3],
+[Color palette],
+[Decorative elements],
+Professional presentation design, 16:9
+```
+
+---
+
+## Project Structure
 
 ```
 slides/
-├── README.md                 # 项目说明
-├── styles/                   # 风格配置文件
+├── README.md                 # This file
+├── styles/                   # Style configurations (JSON)
 │   ├── retro-pop.json
 │   ├── minimal.json
 │   ├── cyberpunk.json
-│   ├── neo-brutalism.json
-│   ├── acid-graphics.json
-│   ├── modern-minimal-pop.json
-│   ├── swiss-international.json
-│   ├── dark-editorial.json
-│   ├── design-blueprint.json
-│   ├── neo-brutalist-ui.json
-│   └── y2k-pixel-retro.json
+│   └── ...
 ├── demos/
-│   └── yc-intro/             # YC 主题 Demo
-│       ├── generate.py       # 生成脚本
-│       ├── content.md        # 内容模板
-│       ├── SHOWCASE.md       # 效果展示
-│       └── images/           # 生成的图片
+│   └── yc-intro/             # YC Demo
+│       ├── generate.py       # Demo generator
+│       ├── SHOWCASE.md       # Visual showcase
+│       └── images/           # Generated images
 └── scripts/
-    └── generate-batch.py     # 批量生成脚本
+    └── generate.py           # Main generator
 ```
 
 ---
 
-## 自定义内容
+## API Reference
 
-### 步骤 1：编辑内容模板
-
-修改 `demos/yc-intro/content.md` 中的内容：
-
-```markdown
-# 标题
-title_en: "Your Topic Here"
-title_cn: "你的主题在这里"
-
-# 副标题
-subtitle_en: "A Brief Description"
-subtitle_cn: "简短描述"
-
-# 关键数据
-stats:
-  - label_en: "Founded"
-    label_cn: "成立时间"
-    value: "2024"
-```
-
-### 步骤 2：运行生成
-
-```bash
-python demos/yc-intro/generate.py
-```
-
----
-
-## 批量生成脚本
-
-使用批量生成脚本一次性生成所有风格：
-
-```bash
-python scripts/generate-batch.py \
-  --prompt "Your presentation title" \
-  --styles all \
-  --output ./output
-```
-
----
-
-## API 使用说明
-
-### Seedream 4.0 (推荐)
+### Using nanobanana2 (Recommended for 2K+)
 
 ```python
 import requests
@@ -140,29 +137,61 @@ import requests
 API_KEY = "sk-your-api-key"
 prompt = "Your design prompt here"
 
+# Note: Use nanobanana2 for 2K+ quality
+response = requests.post(
+    "https://api.302.ai/google/v1/models/gemini-3.1-flash-image-preview:predict",
+    headers={"Authorization": f"Bearer {API_KEY}"},
+    json={
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "responseModalities": ["IMAGE"],
+            "imageConfig": {"aspectRatio": "16:9"}
+        }
+    }
+)
+```
+
+### Using Seedream 4.0 (Alternative)
+
+```python
 response = requests.post(
     "https://api.302.ai/ws/api/v3/bytedance/seedream-v4",
     headers={"Authorization": f"Bearer {API_KEY}"},
     json={
         "prompt": prompt,
-        "size": "1920*1080",
+        "size": "1920*1080",  # Or 3840*2160 for 4K
         "enable_base64_output": True,
         "enable_sync_mode": True
     }
 )
-
-result = response.json()
-image_data = result["data"]["outputs"][0]  # data:image/jpeg;base64,...
 ```
 
 ---
 
-## 示例输出
+## Examples
 
-查看 [demos/yc-intro/SHOWCASE.md](demos/yc-intro/SHOWCASE.md) 查看所有 11 种风格的生成效果。
+View all 11 style examples in [demos/yc-intro/SHOWCASE.md](demos/yc-intro/SHOWCASE.md)
 
 ---
 
-## 许可证
+## Tips for Better Results
 
-MIT License - 详见 [LICENSE](LICENSE)
+1. **Be specific with style descriptors** - "thick black outlines" vs "bold lines"
+2. **Include aspect ratio** - Always specify "16:9" for PPT
+3. **Limit text in prompts** - AI struggles with long text
+4. **Use color names + hex codes** - "salmon pink #FF6B6B"
+5. **Iterate on prompts** - Small tweaks yield different results
+
+---
+
+## License
+
+MIT License - See [LICENSE](LICENSE) for details
+
+---
+
+## Links
+
+- **GitHub**: https://github.com/AAAAAAAJ/slides
+- **302.ai**: https://302.ai/
+- **API Docs**: https://doc.302.ai/

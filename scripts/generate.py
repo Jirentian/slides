@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-Slide Style Generator - Generate PPT slides in 11 different styles
-Usage: python scripts/generate.py --prompt "Your title" --style all --output ./output
+PPT Slide Generator - Generate slides in 11 different styles
+Uses 302.ai nanobanana2 (gemini-3.1-flash-image-preview) for 2K+ quality
+
+Usage:
+  python scripts/generate.py -t "Your Title" -s "Subtitle" --style all
 """
 
 import os
@@ -13,15 +16,18 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-# Default API Key - can be overridden by environment variable
+# API Configuration
 API_KEY = os.getenv("API_KEY", "")
 API_BASE = "https://api.302.ai"
+
+# Use nanobanana2 for 2K+ quality
+MODEL_ENDPOINT = "google/v1/models/gemini-3.1-flash-image-preview:predict"
 
 # 11 Style templates
 STYLE_TEMPLATES = {
     "retro-pop": {
         "name": "Retro Pop Art",
-        "prompt": "Retro pop art style PPT slide, 1970s magazine aesthetic, flat design with thick black outlines, cream beige background, {title}, {subtitle}, {stats}, Salmon pink, sky blue, mustard yellow, mint green accents, Geometric decorations, Bold sans-serif typography, Professional slide design, 16:9",
+        "prompt": "Retro pop art style PPT slide, 1970s magazine aesthetic, flat design with thick black outlines, cream beige background, {title}, {subtitle}, {stats}, Salmon pink, sky blue, mustard yellow, mint green accents, Geometric decorations, Bold sans-serif typography, Professional presentation design, 16:9",
     },
     "minimal": {
         "name": "Minimalist Clean",
@@ -66,10 +72,10 @@ STYLE_TEMPLATES = {
 }
 
 
-def generate_image(prompt_text, output_path):
-    """Generate image using Seedream 4.0 API"""
+def generate_image_nanobanana2(prompt_text, output_path, resolution="2048*1152"):
+    """Generate image using nanobanana2 (gemini-3.1-flash-image-preview) API"""
     if not API_KEY:
-        print("❌ Error: API_KEY not set. Please set environment variable API_KEY")
+        print("❌ Error: API_KEY not set. Set with: export API_KEY='your-key'")
         return False
 
     headers = {
@@ -77,36 +83,57 @@ def generate_image(prompt_text, output_path):
         "Content-Type": "application/json"
     }
 
+    # nanobanana2 expects Gemini format
     payload = {
-        "prompt": prompt_text,
-        "size": "1920*1080",
-        "enable_base64_output": True,
-        "enable_sync_mode": True
+        "contents": [
+            {
+                "parts": [
+                    {
+                        "text": prompt_text
+                    }
+                ]
+            }
+        ],
+        "generationConfig": {
+            "responseModalities": ["IMAGE"],
+            "imageConfig": {
+                "aspectRatio": "16:9"
+            }
+        }
     }
 
     try:
         response = requests.post(
-            f"{API_BASE}/ws/api/v3/bytedance/seedream-v4",
+            f"{API_BASE}/{MODEL_ENDPOINT}",
             headers=headers,
             json=payload,
-            timeout=120
+            timeout=180
         )
 
         if response.status_code == 200:
             result = response.json()
-            if result.get("code") == 200 and "data" in result:
-                data = result["data"]
-                if "outputs" in data and len(data["outputs"]) > 0:
-                    img_data_uri = data["outputs"][0]
-                    if img_data_uri.startswith("data:image"):
-                        b64_data = img_data_uri.split(",", 1)[1]
-                        img_bytes = base64.b64decode(b64_data)
-                        with open(output_path, "wb") as f:
-                            f.write(img_bytes)
-                        return True
+
+            # Parse Gemini response format
+            if "candidates" in result:
+                for candidate in result.get("candidates", []):
+                    if "content" in candidate:
+                        content = candidate["content"]
+                        if "parts" in content:
+                            for part in content["parts"]:
+                                if "inlineData" in part:
+                                    img_data = base64.b64decode(part["inlineData"]["data"])
+                                    with open(output_path, "wb") as f:
+                                        f.write(img_data)
+                                    return True
+
+            print(f"   Unexpected response format")
+            return False
+
+        print(f"   API Error: {response.status_code}")
         return False
+
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"   Exception: {e}")
         return False
 
 
@@ -125,9 +152,9 @@ def generate_slide(title, subtitle, stats, style, output_dir, lang="en"):
 
     output_path = output_dir / f"{style}-{lang}.png"
 
-    print(f"🎨 Generating: {template['name']} ({lang})...")
-    if generate_image(prompt, output_path):
-        print(f"   ✅ Saved: {output_path}")
+    print(f"🎨 {template['name']} ({lang})...")
+    if generate_image_nanobanana2(prompt, output_path):
+        print(f"   ✅ {output_path}")
         return True
     else:
         print(f"   ❌ Failed")
@@ -135,26 +162,51 @@ def generate_slide(title, subtitle, stats, style, output_dir, lang="en"):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate PPT slides in multiple styles")
+    parser = argparse.ArgumentParser(
+        description="Generate PPT slides in 11 styles using nanobanana2 2K",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Generate all styles with English title
+  python scripts/generate.py -t "What is Y Combinator" -s "Startup Accelerator" --stats "2005, 4000+, $600B"
+
+  # Generate single style
+  python scripts/generate.py -t "My Topic" --style cyberpunk
+
+  # Generate Chinese only
+  python scripts/generate.py -t "我的主题" --lang cn
+        """
+    )
     parser.add_argument("--title", "-t", required=True, help="Slide title")
     parser.add_argument("--subtitle", "-s", default="", help="Slide subtitle")
-    parser.add_argument("--stats", default="", help="Statistics to display")
-    parser.add_argument("--style", choices=list(STYLE_TEMPLATES.keys()) + ["all"], default="all", help="Style to generate")
+    parser.add_argument("--stats", default="", help="Statistics (comma-separated)")
+    parser.add_argument("--style", choices=list(STYLE_TEMPLATES.keys()) + ["all"], default="all", help="Style")
     parser.add_argument("--output", "-o", default="./output", help="Output directory")
     parser.add_argument("--lang", choices=["en", "cn", "both"], default="both", help="Language")
+    parser.add_argument("--resolution", default="2048*1152", help="Output resolution (default: 2K 16:9)")
 
     args = parser.parse_args()
+
+    if not API_KEY:
+        print("⚠️  Warning: API_KEY not set")
+        print("   Get your key: https://app.inference.sh/settings/keys")
+        print("   Set with: export API_KEY='sk-...'")
+        print()
 
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    print(f"=" * 60)
-    print(f"Slide Style Generator")
+    print("=" * 60)
+    print("PPT Slide Generator - nanobanana2 2K")
+    print("=" * 60)
     print(f"Title: {args.title}")
+    print(f"Subtitle: {args.subtitle}")
+    print(f"Stats: {args.stats}")
     print(f"Styles: {args.style}")
+    print(f"Language: {args.lang}")
     print(f"Output: {output_dir}")
-    print(f"=" * 60)
+    print(f"Resolution: {args.resolution}")
+    print("=" * 60)
 
     styles_to_generate = list(STYLE_TEMPLATES.keys()) if args.style == "all" else [args.style]
 
@@ -174,9 +226,14 @@ def main():
             else:
                 failed += 1
 
-    print(f"\n{'='*60}")
+        # Rate limiting
+        import time
+        time.sleep(3)
+
+    print()
+    print("=" * 60)
     print(f"Complete! Success: {generated}, Failed: {failed}")
-    print(f"{'='*60}")
+    print("=" * 60)
 
 
 if __name__ == "__main__":
