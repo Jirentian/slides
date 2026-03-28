@@ -20,11 +20,11 @@
 
 ## Quick Start (No Code)
 
-### Step 1: Copy Prompt
-从 [PROMPTS.md](PROMPTS.md) 复制任意风格
+### Step 1:  Prompt
+从 [PROMPTS.md](PROMPTS.md) 选择任意风格
 
 ### Step 2: Customize
-根据需要修改文字内容
+根据需要生成的文字内容
 
 ### Step 3: Generate
 粘贴到 **nanobanana2** 生成!
