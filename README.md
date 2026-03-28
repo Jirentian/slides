@@ -219,11 +219,28 @@ slides/
 ```
 
 ---
+## How to Use This Skill (APIMart Image Generation)
+//gemini-3.1-flash-image-preview: only cost  $0.0250 for 0.5K, $0.025 for 1K, $0.0300 for 2K, $0.0400 for 4K
+
+**Step 1 — Get Your API Key**
+First, register an account on APIMart and obtain your API key:
+https://apimart.ai/?sourceChannel=waytoagi
+After logging in, create an API key and copy it for later use.
+
+**Step 2 — Provide API Information to OpenClaw**
+Your APIMart API key=“your key number”
+API Documentation
+https://docs.apimart.ai/en/api-reference/images/gemini-3.1-flash/generation
+The model name: gemini-3.1-flash-image-preview
+
+
+
 
 ## Links
 
 - **GitHub**: https://github.com/AAAAAAAJ/slides
-- **APImart**: https://apimart.ai/
+- **APImart**: [https://apimart.ai/](https://apimart.ai/?sourceChannel=waytoagi)
+- 
 
 ---
 
